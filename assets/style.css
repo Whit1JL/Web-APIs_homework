@@ -1,0 +1,43 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: whitesmoke;
+
+}
+
+nav {
+    text-align: left;
+    font-size: 20px;
+    color: black;
+}
+
+h1 {
+    border: 0; 
+    align-items: left; 
+    padding-left: 0;
+
+}
+
+h2 {
+    text-align: center;
+    color: blue;
+    font-size: 100px;
+}
+
+p {
+    text-align: center;
+    font-weight: 200px;
+    font-size: 25px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+start {
+    align-items: center;
+}
+
+
+.hide {
+    display: none;
+
+}
+
