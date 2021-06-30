@@ -5,11 +5,12 @@ console.log("hellooo");
 var startButton = document.querySelector("#start");
 var first = document.getElementById("first");
 var quizTimer = document.getElementById("time-left");
+var feedback = document.getElementById("feedback");
 var timeSet = 100;
 var answerDisplay = document.getElementById
 var questionBox = document.getElementById("question-box");
 var currentQuestion = 0;
-var userScore = 0; 
+var userScore = 0;
 // display user Score 
 
 
@@ -82,8 +83,8 @@ var questions = [
     },
 ]
 
-// create event listener that interacts with different possibilities when the user hover over it
-// create message that shows if user answered correctly or notCorrect
+// create something that interacts with different possibilities when the user hover over it
+
 
 // Functions
 
@@ -92,13 +93,13 @@ function decrementClock() {
     if (timeSet === 0) {
         // alert("Game Over") placeholder message 
         // function end game
-        // return;
+        return;
     }
     timeSet--;
     quizTimer.textContent = timeSet;
 
     // create conditional to stop at 0
-    return;
+``
 
 }
 
@@ -134,7 +135,7 @@ function getQuestion() {
 
     `
 
-    for(var i=0; i < questions[currentQuestion].answers.length; i++) {
+    for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
         // create a var for a button 
         var btn = document.createElement("button");
         // places answers inside button
@@ -144,17 +145,12 @@ function getQuestion() {
         questionBox.append(btn);
     }
     // in above, add answers to box and wrap with button
-
-    // 
-
-    // display the questions and answers and have it move ... 
 }
 
 // Create local storage for High Scores
 // [ call body, nav, then h1 tag
 // document.body.nav[0].h1[0].innerHTML = High Score;
 // have code show high scores in numerical order based on highest-lowest
-
 // have storage for the user to save initials and high score ]
 
 
@@ -174,12 +170,16 @@ function checkAnswer(event) {
     console.log();
 
     if (event.target.innerText === questions[currentQuestion].correctAnswer) {
+        feedback.innerHTML = "Correct!";
+        feedback.style.color = "green";
         console.log("Yay");
         userScore++;
     }
     else {
+        feedback.innerHTML = "Incorrect!";
+        feedback.style.color = "red";
         console.log("Boo");
-        timeSet--; 
+        timeSet -= 15;
     }
 
     currentQuestion++;
