@@ -14,6 +14,15 @@ var quizTimer = document.getElementById("time-left");
 // feedback is used to give feedback to player
 var feedback = document.getElementById("feedback");
 
+// called html id to store high scores local storage
+var highScores = document.getElementById("high-scores");
+
+// button that clears high scores 
+var erase = document.querySelector("#clear");
+
+// button that will take you back to main page from high scores
+var goBack = document.querySelector("#goBack");
+
 // timer is set at 100 seconds and will decrease from there 
 var timeSet = 100;
 
@@ -115,6 +124,14 @@ function decrementClock() {
     // (in another section) create endGame element that shows a submit form for people to put their initials and their score is automatically input
 }
 
+// Create local storage for High Scores
+// have code show high scores in numerical order based on highest-lowest
+// have storage for the user to save initials and high score 
+
+// Create a local storage for high scores 
+highScores = localStorage.getItem("highScores");
+console.log(highScores);
+
 function startQuiz() {
 
     // can get rid of coding quiz header
@@ -125,54 +142,51 @@ function startQuiz() {
     // set interval to the decrement clock function
     setInterval(decrementClock, 1000);
 
-// call function getQuestion to run it in startQuiz
+    // call function getQuestion to run it in startQuiz
     getQuestion();
 
 }
 
-// create function that calls questions and possible answers
-
-
+// this functions grabs the questions
 function getQuestion() {
 
     // populate the question-box with question 
     questionBox.innerHTML = `
         <h3>${questions[currentQuestion].title}</h3>
     `
+    // back ticks (above) are used to insert html into js file quickly 
 
+    // (below) add answers to box and wrap with button
+    // created a for loop to continually re-populate the questions
     for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
         // create a var for a button 
         var btn = document.createElement("button");
         // places answers inside button
+        // button targets innerText to get to currentQuestion to get to the answers index
         btn.innerText = questions[currentQuestion].answers[i];
+        // created event listener to button and called checkAnswer
         btn.addEventListener("click", checkAnswer)
 
+        // questionBox is appended to button, which is connected to inner text... answers!
         questionBox.append(btn);
     }
-    // in above, add answers to box and wrap with button
 }
 
-// Create local storage for High Scores
-// [ call body, nav, then h1 tag
-// document.body.nav[0].h1[0].innerHTML = High Score;
-// have code show high scores in numerical order based on highest-lowest
-// have storage for the user to save initials and high score ]
+
 
 
 // end quiz with conditions when questions run out with new div in html 
-// 
- 
+
 
 // This function checks if the answer is correct or not
 function checkAnswer(event) {
-    // have code to show if the user got answer correct or incorrect
-    // add audio for correct or incorrect answers 
+    
     event.preventDefault();
 
     console.log();
 
     if (event.target.innerText === questions[currentQuestion].correctAnswer) {
-    // feedback shows if answer is correct
+        // feedback shows if answer is correct
         feedback.innerHTML = "Correct!";
         feedback.style.color = "green";
         console.log("Yay");
@@ -183,30 +197,32 @@ function checkAnswer(event) {
         feedback.innerHTML = "Incorrect!";
         feedback.style.color = "red";
         console.log("Boo");
-        timeSet = timeSet - 15;
+        timeSet = timeSet - 10;
     }
 
     currentQuestion++;
     getQuestion();
 }
 
-
-
-
 // Event Listeners
+
+// start button will trigger start quiz
 startButton.addEventListener("click", startQuiz);
 
-// add clear high scores button
-// add go back button on high score storage 
+// Created an event listener to clear scores 
+erase.addEventListener("click", function () {
+    localStorage.clear();
+    location.reload();
+});
+
+// Created an event listener to move back to main index page from high scores
+goBack.addEventListener("click", function () {
+    window.location.replace("./index.html");
+});
+
 
 
 
 // pseudo code by Jess: 
-// create something for timeRemaining (subtract time by 10 seconds when user gets quiz incorrect)
-// loop through 1 series of questions
-// leave timer until the end
-// when timer starts, present question
-// when answer the question, present another question
 // when time is 0, quiz is over
-// have event selector that tells if the answer is correct or incorrect
 // use last week's activities, especially activity 19! use event listener 

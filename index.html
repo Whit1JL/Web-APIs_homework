@@ -11,13 +11,22 @@
 
 <body>
     <nav>
-        <!-- <h1 id="highScores">High Scores</h1> -->
+        <div id="local">
+            <h1>High Scores</h1>
+                <ul id="high-scores"
+            <!-- Buttons -->
+            <button id="goBack">Go Back</button>
+            <button id="clear" value="reset">Clear Highscore</button>
+        </div>
+        <div id="timer">
+            Time Left: <span id="time-left"></span>
+        </div>
     </nav>
 
     <div id="first">
         <h2>Coding Quiz Challenge</h2>
         <p>
-            Are you up for a coding challenge? This 14 question quiz will test your knowledge of the fundamentals of
+            Are you up for a coding challenge? This 13 question quiz will test your knowledge of the fundamentals of
             JavaScript.
 
             If you answer incorrectly, the time remaining is subtracted by 10 seconds! Time is of the essence, so choose
@@ -27,9 +36,6 @@
         <button id="start">"Start"</button>
     </div>
     <div id="feedback"></div>
-    <div id="timer">
-        Time Left: <span id="time-left"></span>
-    </div>
     <main>
         <div id="question-box">
 
