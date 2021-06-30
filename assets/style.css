@@ -47,3 +47,9 @@ start {
 
 }
 
+#question-box {
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    color: blue;
+}
