@@ -23,77 +23,67 @@ var questions = [
     {
         title: "Which event occurs when the user clicks on an HTML element?",
         answers: ["onchange", "opportunity", "onmouseover", "onclick"],
-        correctAnswer: "4",
+        correctAnswer: "onclick",
     },
     {
         title: "What is the correct syntax to log something to the console?",
         answers: ["log.console", ".log.console", "console.log", "console.Log"],
-        correctAnswer: "3",
+        correctAnswer: "console.log",
     },
     {
         title: "How do you declare a JavaScript variable?",
-        answers: ["variable carName", "v carName", "var carName"],
-        correctAnswer: "3",
+        answers: ["variable carName", "v carName", "var carName", "carName"],
+        correctAnswer: "var carName",
     },
     {
         title: "How does a FOR loop start?",
-        answers: ["for(i--, i = 7, i > 5)", "for(i = 0; i <= 5, i++)", "for(i+-, i < 7, i = 5)", "for(i = 0; i <= 5; i++)"],
-        correctAnswer: "4",
+        answers: ["for(i--, i = 7, i > 5)", "for(i ! 0; i <= 5, i++)", "for(i+-, i < 7, i = 5)", "for(i = 0; i <= 5; i++)"],
+        correctAnswer: "for(i = 0; i <= 5; i++)",
     },
     {
-        title: "The Do While loop is the same thing as the While loop?",
+        title: "The Do While loop is the same thing as the While loop.",
         answers: ["false", "true"],
-        correctAnswer: "1",
+        correctAnswer: "false",
     },
     {
         title: "How do you find the minimum of x and y using JavaScript?",
         answers: ["Math.min(xy)", "min(x,y)", "min(xy)", "Math.min(x,y)"],
-        correctAnswer: "4",
+        correctAnswer: "Math.min(x,y)",
     },
     {
         title: "What does DOM represent?",
         answers: ["Document Objective Model", "Document Object Model", "Document Oblique Model"],
-        correctAnswer: "2",
+        correctAnswer: "Document Object Model",
     },
     {
         title: "Is JavaScript case-sensitive?",
         answers: ["Yes", "No"],
-        correctAnswer: "1",
+        correctAnswer: "Yes",
     },
     {
         title: "Which HTML element do we put JavaScript?",
         answers: ["<script>", "<hoisting>", "<js>", "<scripting>"],
-        correctAnswer: "1",
+        correctAnswer: "<script>",
     },
     {
         title: "What will the following code return: Boolean(20 > 7)?",
         answers: ["NaN", "True", "False", "Error"],
-        correctAnswer: "2",
+        correctAnswer: "True",
     },
     {
         title: "Which of the following will write the message 'Hello!' in an alert box?",
         answers: ["alert('Hello!')", "msgAlert('Hello!')", "alertBox('Hello!')", "alert(Hello!)"],
-        correctAnswer: "1",
+        correctAnswer: "alert('Hello!')",
     },
     {
         title: "What does JSON represent?",
         answers: ["JavaScript Output Notary", "JavaScript Object Notation", "JavaScript Objection Notation", "JavaScript O Notary"],
-        correctAnswer: "2",
-    },
-    {
-        title: "How do you call a function named 'possibleChoices'?",
-        answers: ["myFunction", "laughingRiver", "possibleChoices", "bobBurger"],
-        correctAnswer: "3",
+        correctAnswer: "JavaScript Object Notation",
     },
 ]
 
-// create function that calls questions and possible answers
 // create event listener that interacts with different possibilities when the user hover over it
-// create message that shows if user answered correctly or not
-
-
-// var = quizDiv querys
-// 
+// create message that shows if user answered correctly or notCorrect
 
 // Functions
 
@@ -102,11 +92,11 @@ function decrementClock() {
     if (timeSet === 0) {
         // alert("Game Over") placeholder message 
         // function end game
-        return;
+        // return;
     }
     timeSet--;
     quizTimer.textContent = timeSet;
-    
+
     // create conditional to stop at 0
     return;
 
