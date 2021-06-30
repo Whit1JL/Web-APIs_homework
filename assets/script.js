@@ -2,20 +2,33 @@ console.log("hellooo");
 
 // Global Variables
 
+// start button variable 
 var startButton = document.querySelector("#start");
+
+// starting elements on the page
 var first = document.getElementById("first");
+
+// called id time left for the timer 
 var quizTimer = document.getElementById("time-left");
+
+// feedback is used to give feedback to player
 var feedback = document.getElementById("feedback");
+
+// timer is set at 100 seconds and will decrease from there 
 var timeSet = 100;
-var answerDisplay = document.getElementById
+
+// questionBox is created to utilized to place questions in it
 var questionBox = document.getElementById("question-box");
+
+// set currentQuestion to 0 so it always changes questions on its own when function is called
 var currentQuestion = 0;
+
+// userScore is set to 0, so it can increase or decrease as time goes on
 var userScore = 0;
-// display user Score 
 
 
 var questions = [
-    // change correct answer to actual one
+    // this is an array that stores my questions, possible answers, and the correct answers
     {
         title: "How can you add a comment in a JavaScript?",
         answers: ["'This is a comment", "//This is a comment", "<This is a comment>", "<!--This is a comment-->"],
@@ -99,40 +112,32 @@ function decrementClock() {
     quizTimer.textContent = timeSet;
 
     // create conditional to stop at 0
-``
-
+    // (in another section) create endGame element that shows a submit form for people to put their initials and their score is automatically input
 }
-
-// make buttons for answer choices 
 
 function startQuiz() {
 
     // can get rid of coding quiz header
-
-
     first.classList.add("hide");
     // start the timer 
     quizTimer.textContent = timeSet;
 
-    // create more of code above to hide different prompts on page!!!!!!!!!
-
+    // set interval to the decrement clock function
     setInterval(decrementClock, 1000);
 
+// call function getQuestion to run it in startQuiz
     getQuestion();
 
 }
 
 // create function that calls questions and possible answers
-// create event listener that interacts with different possibilities when the user hover over it
-// create message that shows if user answered correctly or not
+
 
 function getQuestion() {
-    // define outside of scope to grab 1st question in array
 
     // populate the question-box with question 
     questionBox.innerHTML = `
         <h3>${questions[currentQuestion].title}</h3>
-
     `
 
     for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
@@ -156,12 +161,9 @@ function getQuestion() {
 
 // end quiz with conditions when questions run out with new div in html 
 // 
+ 
 
-
-
-// present a question 
-
-
+// This function checks if the answer is correct or not
 function checkAnswer(event) {
     // have code to show if the user got answer correct or incorrect
     // add audio for correct or incorrect answers 
@@ -170,16 +172,18 @@ function checkAnswer(event) {
     console.log();
 
     if (event.target.innerText === questions[currentQuestion].correctAnswer) {
+    // feedback shows if answer is correct
         feedback.innerHTML = "Correct!";
         feedback.style.color = "green";
         console.log("Yay");
         userScore++;
     }
     else {
+        // feedback shows if answer is incorrect 
         feedback.innerHTML = "Incorrect!";
         feedback.style.color = "red";
         console.log("Boo");
-        timeSet -= 15;
+        timeSet = timeSet - 15;
     }
 
     currentQuestion++;
