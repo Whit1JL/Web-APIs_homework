@@ -6,20 +6,19 @@ var startButton = document.querySelector("#start");
 var first = document.getElementById("first");
 var quizTimer = document.getElementById("time-left");
 var timeSet = 100;
-var questionDisplay = document.getElementById("qAndA");
 var answerDisplay = document.getElementById
-// var questions =
-// var choices = 
-var highScores = document.querySelector("#highScores"); 
+var questionBox = document.getElementById("question-box");
+var currentQuestion = 0;
+var userScore = 0; 
+// display user Score 
 
-
-// array for global var. = questions and choices
 
 var questions = [
+    // change correct answer to actual one
     {
         title: "How can you add a comment in a JavaScript?",
         answers: ["'This is a comment", "//This is a comment", "<This is a comment>", "<!--This is a comment-->"],
-        correctAnswer: "2",
+        correctAnswer: "//This is a comment",
     },
     {
         title: "Which event occurs when the user clicks on an HTML element?",
@@ -92,8 +91,6 @@ var questions = [
 // create event listener that interacts with different possibilities when the user hover over it
 // create message that shows if user answered correctly or not
 
-// can randomize questions? 
-// 
 
 // var = quizDiv querys
 // 
@@ -109,10 +106,13 @@ function decrementClock() {
     }
     timeSet--;
     quizTimer.textContent = timeSet;
+    
     // create conditional to stop at 0
+    return;
 
 }
 
+// make buttons for answer choices 
 
 function startQuiz() {
 
@@ -126,26 +126,36 @@ function startQuiz() {
     // create more of code above to hide different prompts on page!!!!!!!!!
 
     setInterval(decrementClock, 1000);
+
+    getQuestion();
+
 }
 
 // create function that calls questions and possible answers
 // create event listener that interacts with different possibilities when the user hover over it
 // create message that shows if user answered correctly or not
 
-function getQuestion(event) {
+function getQuestion() {
     // define outside of scope to grab 1st question in array
 
-    event.preventDefault();
-    start.remove();
+    // populate the question-box with question 
+    questionBox.innerHTML = `
+        <h3>${questions[currentQuestion].title}</h3>
 
-    var hidden = document.createElement("div");
-    hidden.innerHTML = qAndA[0].title;
+    `
 
-    questionDisplay.textContent = qAndA[0].title;
-    console.log(questionDisplay);
+    for(var i=0; i < questions[currentQuestion].answers.length; i++) {
+        // create a var for a button 
+        var btn = document.createElement("button");
+        // places answers inside button
+        btn.innerText = questions[currentQuestion].answers[i];
+        btn.addEventListener("click", checkAnswer)
 
-    answerDisplay.textContent = qAndA[0].answers;
-    console.log(questionDisplay, answerDisplay);
+        questionBox.append(btn);
+    }
+    // in above, add answers to box and wrap with button
+
+    // 
 
     // display the questions and answers and have it move ... 
 }
@@ -158,20 +168,34 @@ function getQuestion(event) {
 // have storage for the user to save initials and high score ]
 
 
-const highScores = localStorage.setItem('highScores');
-localStorage.setItem('highScores');
+// end quiz with conditions when questions run out with new div in html 
+// 
 
 
 
 // present a question 
 
 
-function checkAnswer() {
+function checkAnswer(event) {
     // have code to show if the user got answer correct or incorrect
     // add audio for correct or incorrect answers 
+    event.preventDefault();
 
+    console.log();
 
+    if (event.target.innerText === questions[currentQuestion].correctAnswer) {
+        console.log("Yay");
+        userScore++;
+    }
+    else {
+        console.log("Boo");
+        timeSet--; 
+    }
+
+    currentQuestion++;
+    getQuestion();
 }
+
 
 
 
