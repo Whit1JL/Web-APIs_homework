@@ -1,5 +1,3 @@
-console.log("hellooo");
-
 // Global Variables
 
 // start button variable 
@@ -19,9 +17,6 @@ var highScores = document.getElementById("high-scores");
 
 // button that clears high scores 
 var erase = document.querySelector("#clear");
-
-// button that will take you back to main page from high scores
-var goBack = document.querySelector("#goBack");
 
 // timer is set at 100 seconds and will decrease from there 
 var timeSet = 100;
@@ -108,37 +103,48 @@ var questions = [
 // create something that interacts with different possibilities when the user hover over it
 
 
-// Functions
-
+// Function will decrease timer 
 function decrementClock() {
     // timeSet decrement the value
     if (timeSet === 0) {
         // alert("Game Over") placeholder message 
         // function end game
-        return;
+
+        endGame();
     }
     timeSet--;
     quizTimer.textContent = timeSet;
-
-    // create conditional to stop at 0
-    // (in another section) create endGame element that shows a submit form for people to put their initials and their score is automatically input
 }
 
-// Create local storage for High Scores
-// have code show high scores in numerical order based on highest-lowest
-// have storage for the user to save initials and high score 
+function endGame() {
+    // create conditional to stop when question index is at the end
+    // submit form for people to place their initials and score is automatically inputed
+    // send submitted form to local storage in highScores 
+    console.log(endGame);
 
 // Create a local storage for high scores 
-highScores = localStorage.getItem("highScores");
+localStorage.setItem("High Scores", userScore);
 console.log(highScores);
 
-if (highScores !== null) {
-    for (var i = 0; i < highScores.length; i++) {
+// Created an event listener to clear scores 
+erase.addEventListener("click", function () {
+    localStorage.clear();
+    location.reload();
+});
 
-        var createLi = document.createElement("li");
-        createLi.textContent = highScores[i].initials + " " + highScores[i].score;
-        highScore.appendChild(createLi);
-    }
+var highScorez = localStorage.getItem("High Scores");
+console.log(highScorez);
+highScores.innerHTML = highScorez;
+
+// if (highScores !== null) {
+
+//     for (var i = 0; i < highScores.length; i++) {
+
+//         var createLi = document.createElement("li");
+//         createLi.textContent = highScores[i].initials + " " + highScores[i].score;
+//         highScore.appendChild(createLi);
+//     }
+// }
 }
 
 function startQuiz() {
@@ -217,17 +223,6 @@ function checkAnswer(event) {
 
 // start button will trigger start quiz
 startButton.addEventListener("click", startQuiz);
-
-// Created an event listener to clear scores 
-erase.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
-});
-
-// Created an event listener to move back to main index page from high scores
-goBack.addEventListener("click", function () {
-    window.location.replace("./index.html");
-});
 
 
 
