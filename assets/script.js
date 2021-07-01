@@ -25,7 +25,7 @@ var timeSet = 100;
 var questionBox = document.getElementById("question-box");
 
 // want form to show when game is over
-var gameOver = document.querySelector(".container");
+// var gameOver = document.querySelector(".container");
 
 // set currentQuestion to 0 so it always changes questions on its own when function is called
 var currentQuestion = 0;
@@ -138,15 +138,15 @@ function endGame() {
     console.log(highScorez);
     highScores.innerHTML = highScorez;
 
-    if (highScorez !== null) {
+    // if (highScorez !== null) {
 
-        for (var i = 0; i < highScorez.length; i++) {
+    //     for (var i = 0; i < highScorez.length; i++) {
 
-            var createLi = document.createElement("li");
-            createLi.textContent = highScorez[i].initials + " " + highScorez[i].score;
-            highScorez.appendChild(createLi);
-        }
-    }
+    //         var createLi = document.createElement("li");
+    //         createLi.textContent = highScorez[i].initials + " " + highScorez[i].score;
+    //         highScorez.appendChild(createLi);
+    //     }
+    // }
 }
 
 function startQuiz() {
