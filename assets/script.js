@@ -132,6 +132,15 @@ function decrementClock() {
 highScores = localStorage.getItem("highScores");
 console.log(highScores);
 
+if (highScores !== null) {
+    for (var i = 0; i < highScores.length; i++) {
+
+        var createLi = document.createElement("li");
+        createLi.textContent = highScores[i].initials + " " + highScores[i].score;
+        highScore.appendChild(createLi);
+    }
+}
+
 function startQuiz() {
 
     // can get rid of coding quiz header
@@ -180,7 +189,7 @@ function getQuestion() {
 
 // This function checks if the answer is correct or not
 function checkAnswer(event) {
-    
+
     event.preventDefault();
 
     console.log();

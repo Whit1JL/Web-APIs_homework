@@ -16,6 +16,16 @@ h1 {
     text-align: left;
 }
 
+#goBack {
+    align-items: left;
+    text-align: center;
+}
+
+#clear {
+    align-items: left;
+    text-align: center;
+}
+
 #timer {
     border: 0;
     align-items: right;
