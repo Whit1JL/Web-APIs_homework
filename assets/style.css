@@ -16,6 +16,11 @@ h1 {
     text-align: left;
 }
 
+btn {
+    display: flex;
+    justify-content: space-around;
+}
+
 #goBack {
     align-items: left;
     text-align: center;
@@ -47,14 +52,19 @@ p {
     flex-wrap: wrap;
 }
 
-start {
+#start {
     align-items: center;
 }
 
 
 .hide {
     display: none;
+}
 
+.container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #question-box {

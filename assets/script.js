@@ -24,6 +24,9 @@ var timeSet = 100;
 // questionBox is created to utilized to place questions in it
 var questionBox = document.getElementById("question-box");
 
+// want form to show when game is over
+var gameOver = document.querySelector(".container");
+
 // set currentQuestion to 0 so it always changes questions on its own when function is called
 var currentQuestion = 0;
 
@@ -100,14 +103,11 @@ var questions = [
     },
 ]
 
-// create something that interacts with different possibilities when the user hover over it
-
 
 // Function will decrease timer 
 function decrementClock() {
     // timeSet decrement the value
     if (timeSet === 0) {
-        // alert("Game Over") placeholder message 
         // function end game
 
         endGame();
@@ -122,29 +122,31 @@ function endGame() {
     // send submitted form to local storage in highScores 
     console.log(endGame);
 
-// Create a local storage for high scores 
-localStorage.setItem("High Scores", userScore);
-console.log(highScores);
+    console.log(gameOver);
 
-// Created an event listener to clear scores 
-erase.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
-});
+    // Create a local storage for high scores 
+    localStorage.setItem("High Scores", userScore);
+    console.log(highScores);
 
-var highScorez = localStorage.getItem("High Scores");
-console.log(highScorez);
-highScores.innerHTML = highScorez;
+    // Created an event listener to clear scores 
+    erase.addEventListener("click", function () {
+        localStorage.clear();
+        location.reload();
+    });
 
-// if (highScores !== null) {
+    var highScorez = localStorage.getItem("High Scores");
+    console.log(highScorez);
+    highScores.innerHTML = highScorez;
 
-//     for (var i = 0; i < highScores.length; i++) {
+    if (highScorez !== null) {
 
-//         var createLi = document.createElement("li");
-//         createLi.textContent = highScores[i].initials + " " + highScores[i].score;
-//         highScore.appendChild(createLi);
-//     }
-// }
+        for (var i = 0; i < highScorez.length; i++) {
+
+            var createLi = document.createElement("li");
+            createLi.textContent = highScorez[i].initials + " " + highScorez[i].score;
+            highScorez.appendChild(createLi);
+        }
+    }
 }
 
 function startQuiz() {
@@ -159,6 +161,8 @@ function startQuiz() {
 
     // call function getQuestion to run it in startQuiz
     getQuestion();
+
+    // container.add("hide");
 
 }
 

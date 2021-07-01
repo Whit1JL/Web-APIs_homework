@@ -13,10 +13,9 @@
     <nav>
         <div id="local">
             <h1>High Scores</h1>
-                <ul id="high-scores"
-            <!-- Buttons -->
-            <button id="goBack">Go Back</button>
-            <button id="clear" value="reset">Clear Highscore</button>
+            <ul id="high-scores" <!-- Buttons -->
+                <button id="goBack">Go Back</button>
+                <button id="clear" value="reset">Clear Highscore</button>
         </div>
         <div id="timer">
             Time Left: <span id="time-left"></span>
@@ -38,21 +37,22 @@
     <div id="feedback"></div>
     <main>
         <div id="question-box"></div>
+        <div class="container">
+            <form action="action_page.php">
+
+                <label for="initials">Initials</label>
+                <input type="text" id="initialS" name="initialz" placeholder="Your initials...">
+
+                <label for="score-storage"></label>
+                <input type="auto" id="lname" name="auto">
+
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>
+        <div id="end-game"></div>
     </main>
-    
 
-
-
-
-
-    <script src="assets/script.js">
-        // document.body.appendChild(h1).innerHTML = "High Scores";
-    </script>
-    <!-- // for local storage... 
-    // document.setItem("High Scores").innerHTML = "High Scores";
-document.body.appendChild(h1).innerHTML = "High Scores"; -->
-
-
+    <script src="assets/script.js"></script>
 </body>
-
 </html>
